@@ -38,7 +38,7 @@ const NoteCard = (props) => {
             </Avatar>
           }
           action={
-            <IconButton onClick={() => props.handleDelete(props.note.id)}>
+            <IconButton onClick={() => props.handleDelete(props.note._id)}>
               <DeleteOutlined></DeleteOutlined>
             </IconButton>
           }

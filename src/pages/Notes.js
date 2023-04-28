@@ -8,13 +8,14 @@ const Notes = () => {
     fetch("http://localhost:8000/notes")
       .then((res) => res.json())
       .then((data) => setNotes(data));
-  }, []);
+  }, [notes]);
+
   const handleDelete = async (id) => {
     await fetch("http://localhost:8000/notes/" + id, {
       method: "DELETE",
-    });
-    const newNotes = notes.filter((note) => note.id !== id);
-    setNotes(newNotes);
+    })
+      .then((response) => response.json())
+      .catch((err) => console.log(err));
   };
   const breakPoints = {
     default: 3,
