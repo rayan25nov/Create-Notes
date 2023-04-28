@@ -4,19 +4,21 @@ import NoteCard from "../UI/NoteCard";
 import Masonry from "react-masonry-css";
 const Notes = () => {
   const [notes, setNotes] = useState([]);
+  const apiUrl = process.env.REACT_APP_API_URL;
   useEffect(() => {
-    fetch("http://localhost:8000/notes")
+    fetch(apiUrl)
       .then((res) => res.json())
       .then((data) => setNotes(data));
-  }, [notes]);
+  }, [notes, apiUrl]);
 
   const handleDelete = async (id) => {
-    await fetch("http://localhost:8000/notes/" + id, {
+    await fetch(apiUrl + id, {
       method: "DELETE",
     })
       .then((response) => response.json())
       .catch((err) => console.log(err));
   };
+
   const breakPoints = {
     default: 3,
     1100: 2,

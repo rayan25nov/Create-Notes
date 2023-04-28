@@ -16,6 +16,7 @@ import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import SendIcon from "@material-ui/icons/Send";
 import { useHistory } from "react-router";
 import ClearAllIcon from "@material-ui/icons/ClearAll";
+
 const useStyles = makeStyles({
   //   btn: {
   //     fontSize: 60,
@@ -49,7 +50,7 @@ const Create = () => {
   const [category, setCategory] = useState("todos");
   const history = useHistory();
   const classes = useStyles();
-
+  const apiUrl = process.env.REACT_APP_API_URL;
   const handleContent = () => {
     setTitle("");
     setDetails("");
@@ -67,7 +68,7 @@ const Create = () => {
     }
     if (title && details) {
       // console.log(title, details, category);
-      fetch("http://localhost:8000/notes", {
+      fetch(apiUrl, {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ title, details, category }),

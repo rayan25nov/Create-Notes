@@ -6,6 +6,7 @@ import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import { purple } from "@material-ui/core/colors";
 import Layout from "./UI/Layout";
 
+
 const theme = createTheme({
   palette: {
     primary: {
